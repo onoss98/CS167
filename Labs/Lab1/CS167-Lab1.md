@@ -238,6 +238,7 @@ This command was run using /Users/student/cs167/hadoop-3.3.6/share/hadoop/common
   Alternatively, you can use the [alternative method](#alternative-method) later in this section to create a project via IntelliJ.
 
 - ***(Q1) What is the name of the created directory?***
+ ~/cs167/workspace/onoss001_lab1
 
 - Change into the project directory and type
 
@@ -249,12 +250,13 @@ This command was run using /Users/student/cs167/hadoop-3.3.6/share/hadoop/common
 - To run your newly created program, type
 
   ```bash
-  java -cp target/[UCRNetID]_lab1-1.0-SNAPSHOT.jar edu.ucr.cs.cs167.[UCRNetID].App
+  java -cp target/onoss001_lab1-1.0-SNAPSHOT.jar edu.ucr.cs.cs167.onoss001.App
   ```
 
   Replace `[UCRNetID]` with your UCR Net ID, not student ID.
 
 - ***(Q2) What do you see at the console output?***
+- I see "Hello World!"
 
 #### Import Your Project into InelliJ IDEA
 
@@ -331,7 +333,7 @@ Try the following method if you see red errors (likely on Windows).
 
     ```java
     // Replace [UCRNetID] with your UCR Net ID, not student ID.
-    package edu.ucr.cs.cs167.[UCRNetID];
+    package edu.ucr.cs.cs167.onoss001;
 
     import java.io.IOException;
     import java.util.StringTokenizer;
@@ -403,6 +405,10 @@ Try the following method if you see red errors (likely on Windows).
 
 *Hint:* It will fail with an error. Report this error.
 
+Exception in thread "main" java.lang.ArrayIndexOutOfBoundsException: Index 0 out of bounds for length 0
+	at edu.ucr.cs.cs167.onoss001.App.main(App.java:61)
+
+Process finished with exit code 1
 - Create a new text file named "input.txt" in the project folder (same level as "src"), and add the following sample content to it.
 
     ```text
@@ -424,6 +430,35 @@ Try the following method if you see red errors (likely on Windows).
 
   Note: We will later cover how MapReduce programs are executed in more details. This lab just ensures that you have the development environment setup.
 
+  but	1
+cannot	3
+crawl	1
+do	1
+fly,	1
+forward	1
+have	1
+if	3
+keep	1
+moving	1
+run	1
+run,	1
+then	3
+to	1
+walk	1
+walk,	1
+whatever	1
+you	5
+
+SLF4J: Class path contains multiple SLF4J bindings.
+SLF4J: Found binding in [jar:file:/Users/omar/.m2/repository/org/slf4j/slf4j-reload4j/1.7.36/slf4j-reload4j-1.7.36.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: Found binding in [jar:file:/Users/omar/.m2/repository/org/slf4j/slf4j-log4j12/1.7.25/slf4j-log4j12-1.7.25.jar!/org/slf4j/impl/StaticLoggerBinder.class]
+SLF4J: See http://www.slf4j.org/codes.html#multiple_bindings for an explanation.
+SLF4J: Actual binding is of type [org.slf4j.impl.Reload4jLoggerFactory]
+log4j:WARN No appenders could be found for logger (org.apache.hadoop.metrics2.lib.MutableMetricsFactory).
+log4j:WARN Please initialize the log4j system properly.
+log4j:WARN See http://logging.apache.org/log4j/1.2/faq.html#noconfig for more info.
+
+
 #### Run the WordCount example from Command Line
 
 - At the command line, type:
@@ -442,6 +477,10 @@ Try the following method if you see red errors (likely on Windows).
 
 *Hint:* Report the error and explain in a few words what it means.
 
+Error: Could not find or load main class edu.ucr.cs.cs167.862396706.App
+Caused by: java.lang.ClassNotFoundException: edu.ucr.cs.cs167.862396706.App
+
+This means that Java is trying to load a particular class but can not find it in the classpath
 - Try to run the program using the following command:
 
     ```bash
@@ -477,7 +516,7 @@ Try the following method if you see red errors (likely on Windows).
           <configuration>
             <archive>
               <manifest>
-                <mainClass>edu.ucr.cs.cs167.[UCRNetID].App</mainClass>
+                <mainClass>edu.ucr.cs.cs167.onoss001.App</mainClass>
               </manifest>
             </archive>
           </configuration>
@@ -496,7 +535,7 @@ Try the following method if you see red errors (likely on Windows).
 
   ```bash
   # Replace [UCRNetID] with your UCR Net ID, not student ID.
-  hadoop jar target/[UCRNetID]_lab1-1.0-SNAPSHOT.jar input.txt output.txt
+  hadoop jar target/onoss001_lab1-1.0-SNAPSHOT.jar input.txt output.txt
   ```
 
 - Add a README.md file to your project home directory. In this file, write down your name, email, UCR Net ID, and Student ID.
@@ -511,7 +550,7 @@ You can also refer to our template at [HERE](CS167-Lab1-README.md) (Click on the
   ```shell script
   #!/usr/bin/env sh
   mvn clean package
-  hadoop jar target/[UCRNetID]_lab1-1.0-SNAPSHOT.jar input.txt output.txt
+  hadoop jar target/onoss001_lab1-1.0-SNAPSHOT.jar input.txt output.txt
   ```
 
 - Package the source files into a compressed file. Only the following files and directories should be included in your submission.
